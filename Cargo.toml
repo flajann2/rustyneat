@@ -1,0 +1,6 @@
+[package]
+name = "rustyneat"
+version = "0.1.0"
+authors = ["Fred Mitchell <fred.mitchell@gmx.de>"]
+
+[dependencies]

@@ -1,0 +1,59 @@
+* ZuseNEAT -- Rust Implementation                                  :TOC_5_gh:
+  - [[#why-i-abandoned-the-c-implementation-attempts][Why I abandoned the C++ implementation attempts]]
+  - [[#the-port-from-rubyneat][The Port from RubyNEAT]]
+  - [[#naming-doctrine][Naming Doctrine]]
+  - [[#documentation][Documentation]]
+
+** Why I abandoned the C++ implementation attempts
+   We have for now decided to implemenzt ZuseNEAT in Rust rather than
+   C++, as we started to initially. The reasons are varied, but the gist 
+   of it is that Rust appears to have a much better and thogught-out
+   ecosystem than C++ does.
+
+   This is not to say that C++ is "bad", but it carries with it a lot 
+   of legacy, and that affects the language going forward. For example,
+   C++20's module support is not a fully-fleshed out as I would've hoped.
+   It does not have any tie-ins to Namespaces at all, and header files
+   are not going away.  And it has been the header files that -- for me, at least --
+   have been the bane of both C++ and C from the very beginning, itself
+   a deep legacy from the past where computers were limited in power, 
+   storage, etc.
+   
+   Also, I was having to implement much core functionality in C++ because
+   either there was no good alternatives, or the few that were there were 
+   ugly or were written in C++ predating C++14 or even C++11.
+
+   I want this to be clean and modern, and not to have to depend on
+   outdated and legacy approaches from the past.
+
+   Besides, Rust is good for the soul! :D
+
+** The Port from RubyNEAT
+   It was ardacious to do NEAT in Ruby, but beyond the simple
+   tricks I used to boost performance, Ruby turned out to be simply
+   too slow for the more advanced NEAT algorithms I tried to implement.
+   
+   However, there is a lot of good code and algorithms that I did 
+   implement there, so those will be brought over and enhanced for the
+   Rust world, and will be adopted to Rust idioms, as much as it makes
+   sense. It will become a bit more functional and less OOP, as it were.
+
+   I am excited about leveraging the power of Traits in Rust, and this 
+   will be critical to doing the NEAT implementation, as it will avoid
+   many potential problems I may have otherwise run into with C++.
+
+   Strong typing can be done after a fashion in C++, but it is messy and
+   hard to do, and the error messages can be a bit cryptic to decipher. On
+   the other hand, Rust should speed up the development process by making
+   that more straightforward from the get-go
+** Naming Doctrine
+   Initially, I was going to name this project "RustyNEAT", but thought
+   better of doing that. The language should be largely immaterial, for 
+   the most part, and I may do parts of this system in C++ or other languages
+   as is approporiate. Besides, bindings for Ruby, Python, C++, etc. further
+   makes this less about being written in Rust per-se and more about
+   having an engine that can be used anywhere. So ZuseNEAT it is.
+
+** Documentation
+   Soon to come.
+

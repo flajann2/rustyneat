@@ -1,6 +1,6 @@
 [package]
-name = "rustyneat"
-version = "0.1.0"
+name = "ZuseNEAT"
+version = "0.0.0"
 authors = ["Fred Mitchell <fred.mitchell@gmx.de>"]
 
 [dependencies]

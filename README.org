@@ -1,0 +1,196 @@
+* ZuseNEAT -- Rust Implementation                                  :TOC_5_gh:
+  - [[#backgrounders][Backgrounders]]
+    - [[#why-i-abandoned-the-c-implementation-attempts][Why I abandoned the C++ implementation attempts]]
+    - [[#the-port-from-rubyneat][The Port from RubyNEAT]]
+    - [[#naming-doctrine][Naming Doctrine]]
+  - [[#scope-of-this-project][Scope of this Project]]
+    - [[#in-more-prosaic-terms][In more Prosaic Terms...]]
+      - [[#dsl][DSL]]
+      - [[#plugins][Plugins]]
+      - [[#multicore-friendly][Multicore Friendly]]
+      - [[#distributed-evolution][Distributed Evolution]]
+      - [[#totally-open-sourced][Totally Open Sourced]]
+      - [[#code-of-conduct][Code of Conduct]]
+  - [[#documentation][Documentation]]
+    - [[#instalaltion][Instalaltion]]
+      - [[#llvm][LLVM]]
+    - [[#differences-and-departures-from-rubyneat-and-neat-in-general][Differences and Departures from RubyNEAT (and NEAT in general)]]
+    - [[#neat-and-htm][NEAT and HTM]]
+
+** Backgrounders   
+   We have written a version of the NEAT algorithm in Ruby.
+   It turned out to be nothing more than a "proof of concept", 
+   and at the time our intentions were to create a platform
+   for machine learning to introduce to the Ruby community, 
+   and also to bring to Ruby into the arena of data science,
+   which currently Python dominates.
+
+   That was then, circa 2012.
+   
+   My current focus is to implement this wonderful algorithm
+   in Rust, taking into it some of the latest developments 
+   from the NEAT community, and perhaps adding some of my own,
+   taking NEAT to a new level.
+
+   Being that Rust uses the LLVM, we aim to take advantage of 
+   that eventually. The idea is to target other platforms, such
+   as the GPU.
+
+   We have learned much from the initial RubyNEAT implementation.
+   And so all of that and more will come into play here.
+*** Why I abandoned the C++ implementation attempts
+   We have for now decided to implemenzt ZuseNEAT in Rust rather than
+   C++, as we started to initially. The reasons are varied, but the gist 
+   of it is that Rust appears to have a much better and thogught-out
+   ecosystem than C++ does.
+
+   This is not to say that C++ is "bad", but it carries with it a lot 
+   of legacy, and that affects the language going forward. For example,
+   C++20's module support is not a fully-fleshed out as I would've hoped.
+   It does not have any tie-ins to Namespaces at all, and header files
+   are not going away.  And it has been the header files that -- for me, at least --
+   have been the bane of both C++ and C from the very beginning, itself
+   a deep legacy from the past where computers were limited in power, 
+   storage, etc.
+   
+   Also, I was having to implement much core functionality in C++ because
+   either there was no good alternatives, or the few that were there were 
+   ugly or were written in C++ predating C++14 or even C++11.
+
+   I want this to be clean and modern, and not to have to depend on
+   outdated and legacy approaches from the past.
+
+   Besides, Rust is good for the soul! :D
+
+*** The Port from RubyNEAT
+   It was ardacious to do NEAT in Ruby, but beyond the simple
+   tricks I used to boost performance, Ruby turned out to be simply
+   too slow for the more advanced NEAT algorithms I tried to implement.
+   
+   However, there is a lot of good code and algorithms that I did 
+   implement there, so those will be brought over and enhanced for the
+   Rust world, and will be adopted to Rust idioms, as much as it makes
+   sense. It will become a bit more functional and less OOP, as it were.
+
+   I am excited about leveraging the power of Traits in Rust, and this 
+   will be critical to doing the NEAT implementation, as it will avoid
+   many potential problems I may have otherwise run into with C++.
+
+   Strong typing can be done after a fashion in C++, but it is messy and
+   hard to do, and the error messages can be a bit cryptic to decipher. On
+   the other hand, Rust should speed up the development process by making
+   that more straightforward from the get-go
+*** Naming Doctrine
+   Initially, I was going to name this project "RustyNEAT", but thought
+   better of doing that. The language should be largely immaterial, for 
+   the most part, and I may do parts of this system in C++ or other languages
+   as is approporiate. Besides, bindings for Ruby, Python, C++, etc. further
+   makes this less about being written in Rust per-se and more about
+   having an engine that can be used anywhere. So ZuseNEAT it is.
+
+** Scope of this Project
+   We aim at the lofty, very lofty goal of achieving nothing
+   less than AGI. We are convinced that the gradient-descent
+   approaches in vogue today are largely a dead-end with regards
+   to AGI. Not to knock them too hard, because they are
+   producing a lot of benefits to the world of data science
+   and what is billed as "deep learning" today, which is to be
+   applauded.
+
+   We are convinced that the NEAT algorithm represents a real
+   possibility of eventually achieving AGI, but only a very
+   small, albeit necessary, first step.
+
+   Having said that, we also aim to make NEAT available for
+   solving today's problems, and to compete in the realm
+   of the gradient descent approaches.
+
+   Another overarching issue with today's neural nets is that
+   they require way too much tweaking to produce useful results.
+   Even though there are current efforts of evolving the
+   "hyper parameters", as they are called, we think we can
+   move beyond this, even.
+
+   Also, we are no longer targeting any specific developer
+   group anymore. That is to say, we are not really looking
+   to appeal to Rust developers exclusively. We wish to
+   offer a tool that is "language-agnostic", that can be plugged
+   into anything and anywhere. Since Rust is a compiled language,
+   we will expose a C interface so it can be plugged into
+   anything, including Python, Ruby, R, Haskell, Elixir, Go, etc.
+
+*** In more Prosaic Terms...
+**** DSL
+     We are going to abandon the old RubyNEAT DSL
+     entirely. It was based on Ruby, after all. The
+     new DSL will be redesigned from the ground up
+     to be a powerful adjunct in its own right to
+     RustyNEAT.
+**** Plugins
+     We aim to create a platform that is plugin-friendly.
+     Initially, we will require the plugins to be written
+     in Rust, but as things solidify, we may consider
+     to open that up to anything. 
+**** Multicore Friendly
+     Ruby is NOT multicore-friendly, and this is where I ran
+     into problems with making it scalable. But I was not
+     happy with the results and where it was headed. Rust
+     is naturally multicore-friendly, so many of those
+     initially headaches will simply vanish.
+**** Distributed Evolution
+     In today's cloud technology, one has access to 
+     "unlimited" computing resources, and we may as well
+     be able to take advantage of that here. There is
+     of course Amdahl's Law, but this will be more
+     of a function of the evolutionary tasks at hand, 
+     not the RustyNEAT engine and the housekeeping
+     it needs to do. So we wish to keep RustyNEAT small,
+     lean, and most of all, fast.
+**** Totally Open Sourced
+     As is RubyNEAT, so shall RustyNEAT remain totally
+     Open Sourced. There is a debate going on in our
+     developer community with regards to "Open Source"
+     vs. "Free Software". Both are good. We would like
+     to get some recognition for the creation of
+     RustyNEAT, but this is not a requirement per se. 
+     We shall rely on the "Honor Principle" here.
+**** Code of Conduct
+     I don't like how politics are beginning to infiltrate
+     the Open Source and Free Software communities. I've
+     been in the field approaching 40 years, and have watched
+     it grow up from the initial Apple II and S-100 bus days 
+     to what it is now.
+
+     My policy then is as it is now: Write Good Code. Your
+     genders, skin hues, sexual orientation, beliefs,
+     affiliations, ethnicities, etc. are all largely irrelevant
+     to the task of producing great software.
+
+     So, in short, my "Code of Conduct" is: Write Good Code.
+     End of Story, and the rest will attend to itself. Keep
+     the politics out of our fine culture of craftsmanship
+     and hacking. Mach's einfach.   
+** Documentation
+*** Instalaltion
+**** LLVM
+     You must install LLVM version 8, and on Ubuntu, thusly:
+     #+begin-src bash
+     sudo apt install llvm-8
+     #+end-src
+
+*** Differences and Departures from RubyNEAT (and NEAT in general)
+    We want to introduce the concept of distal and
+    proximal connections. Distal connections don't result
+    in firing, but primes the neuron to be more likely
+    to fire (reducing the threshold) in the next
+    iterations.
+
+    As such, the neuron must maintain temporal state.
+    But real neurons already do this.
+*** NEAT and HTM
+    I am attempting to incorporate some of the elements 
+    of HTM into this version of NEAT early on, like
+    for example proximal and distal connections aka
+    pyramidal neurons. Some consideration for how to do
+    sparse activation will also be considered.
+

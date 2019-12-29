@@ -1,6 +1,6 @@
+use super::*;
 /// Genome
 use std::vec;
-use super::*;
 
 pub struct Gene<I = u32, W = f32> {
     input: I,
@@ -17,6 +17,8 @@ pub struct Genome<Score = f32, I = u32, W = f32> {
     genes: Genes<I, W>,
     score: Score,
 }
+
+impl Genome {}
 
 #[cfg(test)]
 mod tests {

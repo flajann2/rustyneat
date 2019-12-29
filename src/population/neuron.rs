@@ -1,10 +1,14 @@
-/// Base neuron
+//! # Neuron
+//! Neuron knows what other neurons it has inputs from, and
+//! what presents as outputs. A neuron can have zero or more
+//! inputs and outputs.
 
-use std::vec;
+
 use super::*;
+use std::vec;
 
 pub struct Neuron {
-    genes: genome::Genes,
+
 }
 
 pub type Neurons = Vec<Neuron>;
@@ -14,6 +18,5 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_neuron(){
-    }
+    fn test_neuron() {}
 }

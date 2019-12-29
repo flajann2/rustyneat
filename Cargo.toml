@@ -1,5 +1,5 @@
 [package]
-name = "zuseneat"
+name = "zuse-neat"
 version = "0.0.0"
 authors = ["Fred Mitchell <fred.mitchell@gmx.de>"]
 edition = '2018'

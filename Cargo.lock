@@ -2299,7 +2299,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "zuseneat"
+name = "zuse-neat"
 version = "0.0.0"
 dependencies = [
  "clap 2.33.0 (registry+https://github.com/rust-lang/crates.io-index)",

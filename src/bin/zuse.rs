@@ -21,7 +21,8 @@ fn main() {
           (@arg verbose: -v --verbose "Nesting Print test information verbosely")
          )
         )
-    ).get_matches();
+    )
+    .get_matches();
 
     // Gets a value for config if supplied by user, or defaults to "default.conf"
     let config = matches.value_of("config").unwrap_or("default.conf");
@@ -49,5 +50,4 @@ fn main() {
             println!("Printing normally...");
         }
     }
-
 }

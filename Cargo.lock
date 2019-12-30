@@ -2292,6 +2292,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "zn-encoding"
+version = "0.0.0"
+
+[[package]]
 name = "zn-gui"
 version = "0.0.0"
 dependencies = [

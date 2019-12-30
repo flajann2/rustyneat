@@ -7,11 +7,16 @@
 use super::*;
 use std::vec;
 
-pub struct Neuron {
+/// We have borrowed references to these genes
+/// and these are only the genes that has the
+/// particular neuron as its output.
+type NGenes<'g, I = u32, W = f32> = Vec<&'g mut genome::Gene<I, W>>;
 
+pub struct Neuron<'g> {
+    ngenes: NGenes<'g>,
 }
 
-pub type Neurons = Vec<Neuron>;
+pub type Neurons<'g> = Vec<Neuron<'g>>;
 
 #[cfg(test)]
 mod tests {

@@ -2,9 +2,9 @@ use super::*;
 /// Critter construction
 use std::vec;
 
-pub struct Critter {
+pub struct Critter<'g> {
     genome: genome::Genome,
-    neurons: neuron::Neurons,
+    neurons: neuron::Neurons<'g>,
 }
 
 trait Sex<G> {

@@ -49,6 +49,14 @@ mod tests {
         // assert_eq!(add(1, 2), 3);
     }
 
+    fn test_genome_addition(gn: &mut Genome, g: Gene) {
+        let bg = gn.add(g);
+        match bg {
+            Some(b) => assert_eq!(b.output, 1),
+            None => assert!(false, "should never get here")
+        }
+    }
+    
     #[test]
     fn test_genome() {
         let mut gn = Genome::new();
@@ -63,13 +71,8 @@ mod tests {
             ..Gene::new()
         };
         assert_ne!(g1.enabled, g2.enabled);
-        let bg1 = gn.add(g1);
-        let bg2 = gn.add(g2);
+        test_genome_addition(&mut gn, g1);
+        test_genome_addition(&mut gn, g2);
         assert_eq!(gn.genes.len(), 2);
-        
-        match bg1 {
-            Some(b1) => assert_eq!(b1.output, 1),
-            None => assert!(false, "should never get here")
-        }
     }
 }

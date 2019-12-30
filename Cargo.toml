@@ -18,4 +18,5 @@ inkwell = { git = "https://github.com/TheDan64/inkwell", branch = "llvm8-0" }
 [workspace]
 members = [
     "zn-gui",
+    "zn-encoding",
 ]

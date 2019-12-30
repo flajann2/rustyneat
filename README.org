@@ -16,6 +16,10 @@
       - [[#llvm][LLVM]]
     - [[#differences-and-departures-from-rubyneat-and-neat-in-general][Differences and Departures from RubyNEAT (and NEAT in general)]]
     - [[#neat-and-htm][NEAT and HTM]]
+  - [[#design-decisions][Design Decisions]]
+    - [[#internal-signal-representation][Internal signal representation]]
+    - [[#neurons-shall-do-borrowed-references-to-the-underlying-genes][Neurons shall do "borrowed" references to the underlying genes]]
+    - [[#a-seperate-encoding-crate-will-be-used][A seperate encoding crate will be used]]
 
 ** Backgrounders   
    We have written a version of the NEAT algorithm in Ruby.
@@ -193,4 +197,34 @@
     for example proximal and distal connections aka
     pyramidal neurons. Some consideration for how to do
     sparse activation will also be considered.
+
+** Design Decisions
+*** Internal signal representation
+    We have decided to use -1 to +1 as the canocial internal
+    signalalling in ZuseNEAT, with the understanding that
+    0 is the default, and the swing can be positive or negative
+    espeically in sparse activation cases.
+*** Neurons shall do "borrowed" references to the underlying genes
+    Basically, the neuron as it exists is simply a 
+    virtual concept for the code that will be eventually
+    gerated by the expressor, and as such, should be 
+    designed with that alone in mind.
+
+    So, the references will make it easier to navigate the neurons
+    and see whether or not they arr distal or proximal, etc.,
+    as well as if they are even active at all. Those gene
+    flags will affect the eventual expression.
+*** A seperate encoding crate will be used
+    I want to make it "easy" to plug in various
+    different encoding schemes without altering ZuseNEAT
+    directly, so that is the motivation. I am trying to
+    decide of these will be linked in directly, or if something like 
+    Flatbuffers should be used. Perhaps both.
+
+    Flatbuffers will give the greatest flexibility to allow 
+    ZuseNEAT to be used in many different environments in
+    a machine-agnostic way. HOWEVER, we should also be able
+    to use the direct shared library approach. And the
+    shared library can be a special one to snag flatbuffer
+    support.
 

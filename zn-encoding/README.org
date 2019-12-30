@@ -1,0 +1,7 @@
+* Encoding for ZuseNEAT                                            :TOC_5_gh:
+  - [[#introduction][Introduction]]
+
+** Introduction
+  This module presents as a means
+  to create then encoding to be passed to ZuseNEAT.
+

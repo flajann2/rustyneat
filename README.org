@@ -20,6 +20,7 @@
     - [[#internal-signal-representation][Internal signal representation]]
     - [[#neurons-shall-do-borrowed-references-to-the-underlying-genes][Neurons shall do "borrowed" references to the underlying genes]]
     - [[#a-seperate-encoding-crate-will-be-used][A seperate encoding crate will be used]]
+    - [[#ecs-and-generational-indices][ECS and generational indices]]
 
 ** Backgrounders   
    We have written a version of the NEAT algorithm in Ruby.
@@ -227,4 +228,12 @@
     to use the direct shared library approach. And the
     shared library can be a special one to snag flatbuffer
     support.
+*** ECS and generational indices
+    Because this is Rust, let's head off the Borrow Checker at the pass
+    and use an ECS approach rather than objects.
+
+    See the ECS and slab_tree crates.
+
+    If we need to, we will fork these projects and make them do
+    our bidding, but for now we'll assume that they will do what we want.
 

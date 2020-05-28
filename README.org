@@ -205,6 +205,10 @@
     signalalling in ZuseNEAT, with the understanding that
     0 is the default, and the swing can be positive or negative
     espeically in sparse activation cases.
+
+    Well, now, we may have a different approach
+    to this in the case of the HTM influence. I will
+    have to think about this.
 *** Neurons shall do "borrowed" references to the underlying genes
     Basically, the neuron as it exists is simply a 
     virtual concept for the code that will be eventually
@@ -215,6 +219,12 @@
     and see whether or not they arr distal or proximal, etc.,
     as well as if they are even active at all. Those gene
     flags will affect the eventual expression.
+
+    We will use a data-centric approach for everything,
+    a struct of arrays rather than an array of structs.
+    as such, a reference index shall be used to 
+    address everything.
+
 *** A seperate encoding crate will be used
     I want to make it "easy" to plug in various
     different encoding schemes without altering ZuseNEAT

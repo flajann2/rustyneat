@@ -11,10 +11,11 @@ repository = "https://github.com/flajann2/zuse-neat-rust"
 
 [dependencies]
 peg = "0"
-clap = "2.33.0"
-rustyline = "5.0.5"
+clap = "2.33"
+rustyline = "5.0"
 inkwell = { git = "https://github.com/TheDan64/inkwell", branch = "llvm8-0" }
-bitvec = "0.17.0"
+bitvec = "0.17"
+gen_indices = "0.0"
 
 slab_tree = "0.3.1"
 ecs = "0.23.1"

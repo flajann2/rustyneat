@@ -7,7 +7,6 @@ startup_window: neat
 windows:
   - neat:
       layout: 3ccd,274x63,0,0{90x63,0,0,47,90x63,91,0,49,92x63,182,0[92x22,182,0,50,92x21,182,23,51,92x18,182,45,52]}
-      root: /development/rust_proj/zuse-neat-rust
       panes:
         -
         - note:
@@ -19,7 +18,6 @@ windows:
         - 
   - tests:
       layout: 3ccd,274x63,0,0{90x63,0,0,47,90x63,91,0,49,92x63,182,0[92x22,182,0,50,92x21,182,23,51,92x18,182,45,52]}
-      root: /development/rust_proj/zuse-neat-rust
       panes:
         - 
         - 

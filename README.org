@@ -11,6 +11,10 @@
       - [[#distributed-evolution][Distributed Evolution]]
       - [[#totally-open-sourced][Totally Open Sourced]]
       - [[#code-of-conduct][Code of Conduct]]
+  - [[#arichecture][Arichecture]]
+    - [[#critters-now-becomes-colums-with-layers][Critters now becomes Colums with layers.]]
+      - [[#synapses][Synapses]]
+      - [[#layers-within-the-column][Layers within the Column]]
   - [[#documentation][Documentation]]
     - [[#instalaltion][Instalaltion]]
       - [[#llvm][LLVM]]
@@ -175,6 +179,31 @@
      End of Story, and the rest will attend to itself. Keep
      the politics out of our fine culture of craftsmanship
      and hacking. Mach's einfach.   
+** Arichecture
+   What we are currently considering will
+   represent a radical departure from how NEAT
+   works, but will incorporate aspects of NEAT
+   with aspects of HTM. 
+*** Critters now becomes Colums with layers.
+**** Synapses
+     We now have new synaptic representations:
+
+     | synapse             | description                                                                               |   |
+     |---------------------+-------------------------------------------------------------------------------------------+---|
+     | proximal-exitatory  | proximal connections only connect with other neurons in the same layer.                   |   |
+     | proximal-inhibitory | inhibitory only inhibits other neurons within the same layer.                             |   |
+     | distal              | distal connect neurons between different layers, and only serves to depolarize, not fire. |   |
+     | apical              | apical are like distal, but connects between columns                                      |   |
+    
+     In the normal parlance -- even with classical NEAT -- a synapse can either be inhibitory or exitatory.
+     We dispense with that, because in real brains, the inhibitory neurons serves a different function entirely. We
+     posit that the two are shared in traditional neural nets because it makes the math easier. And NEAT departed from
+     the typical mindset, except it retained thas aspect.
+**** Layers within the Column
+     We can have any number of layers that we like. However, in practice, I think the number of layers
+     should be kept low. Also, apical connections are only allowed in one or two of the layers to the 
+     same layers in other Columns.
+
 ** Documentation
 *** Instalaltion
 **** LLVM

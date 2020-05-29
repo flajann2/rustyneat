@@ -14,6 +14,7 @@
   - [[#arichecture][Arichecture]]
     - [[#critters-now-becomes-colums-with-layers][Critters now becomes Colums with layers.]]
       - [[#synapses][Synapses]]
+        - [[#basket-cells-and-inhibition][Basket cells and inhibition:]]
       - [[#layers-within-the-column][Layers within the Column]]
   - [[#documentation][Documentation]]
     - [[#instalaltion][Instalaltion]]
@@ -199,6 +200,12 @@
      We dispense with that, because in real brains, the inhibitory neurons serves a different function entirely. We
      posit that the two are shared in traditional neural nets because it makes the math easier. And NEAT departed from
      the typical mindset, except it retained thas aspect.
+
+***** Basket cells and inhibition:
+      Basket cells surrounds the Pyramidial cells, and are very fast in
+      responding to a firing of a Pyrimidial cell, as it basically inhibits
+      all the other Prymindia cells in the vincinity.
+
 **** Layers within the Column
      We can have any number of layers that we like. However, in practice, I think the number of layers
      should be kept low. Also, apical connections are only allowed in one or two of the layers to the 
